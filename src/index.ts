@@ -7,8 +7,3 @@ const read = readline.createInterface({
 });
 
 export default read;
-
-// r.on("line", function (line: any) {
-//     let vals = line.split(" ");
-//     console.log(parseInt(vals[0]) + parseInt(vals[1]));
-// });
