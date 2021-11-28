@@ -1,5 +1,5 @@
 # :memo: CSES Problem Set Solutions
-CSES is one of the best sources of programming tasks. In this repository you can find my solutions that I solve in my free time using my favorite Typescript programming language. I hope that I can create a complete collection of solved problems.
+CSES is one of the best sources of programming tasks. In this repository you can find my solutions that I solve in my free time using TypeScript programming language. I hope that I can create a complete collection of solved problems.
 
 ## :rocket: How to run my code?
 To run my code on your computer, just clone this repository:
