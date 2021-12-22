@@ -11,6 +11,7 @@ Then run the command to install the necessary packages:
 ```sh
 npm install
 ```
+> Make sure you have already installed [Node.js](https://nodejs.org/en/) before running this command
 
 Now just use the `ts-node` command to run any code by specifying the path to it:
 ```sh
