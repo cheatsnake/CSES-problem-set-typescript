@@ -17,4 +17,4 @@ Now just use the `ts-node` command to run any code by specifying the path to it:
 ```sh
 ts-node .\src\IntroductoryProblems\WeirdAlgorithm.ts
 ```
-Thanks to  <b>Node.js readline module</b> all my solutions support data entry from the console.
+Thanks to  [Node.js readline module](https://nodejs.org/api/readline.html) all my solutions support data entry from the console.
