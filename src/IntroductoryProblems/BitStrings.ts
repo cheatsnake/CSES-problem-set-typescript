@@ -1,12 +1,13 @@
 import read from "../index";
 
 // Solution ------------------------------------------------------
-const bitString = (bitLen: number): number => Math.pow(2, bitLen);
+const bitStrings = (bitLen: number): number => Math.pow(2, bitLen);
 // --------------------------------------
 
-read.on("line", function (line: string) {
-    const int = Number(line);
-    console.log(bitString(int));
+read.question("", (line: string) => {
+    const n = Number(line);
+    console.log(bitStrings(n));
+    read.close();
 });
 
-export default bitString;
+export default bitStrings;
