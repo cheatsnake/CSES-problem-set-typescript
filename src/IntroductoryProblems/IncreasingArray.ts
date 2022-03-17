@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution -------------------------------------
 function increasingArray(arr: number[]): number {
     let counter = 0;
     for (let i = 1; i < arr.length; i++) {
@@ -10,8 +11,24 @@ function increasingArray(arr: number[]): number {
     }
     return counter;
 }
+// ----------------
 
-read.on("line", function (line: string) {
-    const vals = line.split(" ").map(Number);
-    console.log(increasingArray(vals));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const values = lines[1]
+        .split(" ")
+        .slice(0, +lines[0])
+        .map(Number);
+    console.log(increasingArray(values));
+};
+
+main();
+
+export default increasingArray;
