@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution ------------------------------------
 function removingDigits(value: number): number {
     let counter: number = 0;
     let current: string = value.toString();
@@ -14,8 +15,14 @@ function removingDigits(value: number): number {
 
     return counter;
 }
+// ----------------
 
-read.on("line", function (line: string) {
-    const value: number = line.split(" ").map(Number)[0];
+const main = async () => {
+    const value = Number(await readConsole());
+    rl.close();
     console.log(removingDigits(value));
-});
+};
+
+main();
+
+export default removingDigits;
