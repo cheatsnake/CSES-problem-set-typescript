@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution -----------------------
 function twoSets(n: number): void {
     const firstSet = [],
         secondSet = [];
@@ -40,8 +41,14 @@ function twoSets(n: number): void {
     console.log(secondSet.length);
     console.log(...secondSet);
 }
+// ------------------------------
 
-read.on("line", function (line: string) {
-    const value = Number(line);
+const main = async () => {
+    const value = Number(await readConsole());
+    rl.close();
     twoSets(value);
-});
+};
+
+main();
+
+export default twoSets;
