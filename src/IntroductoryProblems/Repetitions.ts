@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution ------------------------------
 function repetitions(str: string): number {
     const chars: string[] = ["A", "C", "G", "T"];
     const arr: number[] = [];
@@ -8,7 +9,14 @@ function repetitions(str: string): number {
 
     return Math.max(...arr);
 }
+// -------------------------
 
-read.on("line", function (line: string) {
-    console.log(repetitions(line));
-});
+const main = async () => {
+    const value = await readConsole();
+    rl.close();
+    console.log(repetitions(value));
+};
+
+main();
+
+export default repetitions;
