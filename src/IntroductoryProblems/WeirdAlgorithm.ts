@@ -1,19 +1,29 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
-function weirdAlgorithm(num: number): void {
-    const isEven = (x: number): boolean => x % 2 === 0;
+// Solution ----------------------------------
+function weirdAlgorithm(num: number): string {
+    let result = num + " ";
 
     while (num > 1) {
-        console.log(num);
-        if (isEven(num)) {
+        if (num % 2 == 0) {
             num /= 2;
+            result += `${num} `;
         } else {
             num = num * 3 + 1;
+            result += `${num} `;
         }
     }
-}
 
-read.on("line", function (line: string) {
-    const vals = line.split(" ");
-    weirdAlgorithm(+vals[0]);
-});
+    return result.trim();
+}
+// ----------------------
+
+const main = async () => {
+    const value = Number(await readConsole());
+    rl.close();
+    console.log(weirdAlgorithm(value));
+};
+
+main();
+
+export default weirdAlgorithm;
