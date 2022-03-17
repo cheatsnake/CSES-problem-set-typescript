@@ -1,4 +1,4 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
 // Solution --------------------------------------------------------
 function editDistance(firstStr: string, secondStr: string): number {
@@ -12,11 +12,20 @@ function editDistance(firstStr: string, secondStr: string): number {
     diff += Math.abs(secondStr.length - firstStr.length);
     return diff;
 }
-// --------------------------------------
+// ------------------------------------------------------
 
-read.on("line", function (line: string) {
-    const vals: string[] = line.split(" ");
-    console.log(editDistance(vals[0], vals[1]));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    console.log(editDistance(lines[0], lines[1]));
+};
+
+main();
 
 export default editDistance;
