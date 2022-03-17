@@ -1,13 +1,15 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
 // Solution ------------------------------------------------------
 const bitStrings = (bitLen: number): number => Math.pow(2, bitLen);
 // --------------------------------------
 
-read.question("", (line: string) => {
-    const n = Number(line);
-    console.log(bitStrings(n));
-    read.close();
-});
+const main = async () => {
+    const value = Number(await readConsole());
+    rl.close();
+    console.log(bitStrings(value));
+};
+
+main();
 
 export default bitStrings;
