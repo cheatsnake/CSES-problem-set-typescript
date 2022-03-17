@@ -1,4 +1,4 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
 // Solution ------------------------
 function grayCode(n: number): void {
@@ -7,11 +7,14 @@ function grayCode(n: number): void {
         console.log(i.toString(2).padStart(n, "0"));
     }
 }
-// --------------------------------------
+// ---------------------------------
 
-read.on("line", function (line: string) {
-    const int = Number(line);
-    grayCode(int);
-});
+const main = async () => {
+    const value = Number(await readConsole());
+    rl.close();
+    grayCode(value);
+};
+
+main();
 
 export default grayCode;
