@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution ------------------------------
 function permutations(n: number): string {
     if (n === 1) return "1";
     if (n < 4) return "NO SOLUTION";
@@ -15,8 +16,14 @@ function permutations(n: number): string {
 
     return arr.join(" ");
 }
+// ----------------------
 
-read.on("line", function (line: string) {
-    const int = Number(line);
-    console.log(permutations(int));
-});
+const main = async () => {
+    const value = Number(await readConsole());
+    rl.close();
+    console.log(permutations(value));
+};
+
+main();
+
+export default permutations;
