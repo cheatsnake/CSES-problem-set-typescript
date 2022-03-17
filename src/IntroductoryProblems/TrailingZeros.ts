@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution ---------------------------------------
 const factorial = (num: number): number | null => {
     if (num < 2) return num < 0 ? null : 1;
     let res: number = 1;
@@ -20,7 +21,14 @@ function trailingZeros(num: number) {
 
     return count;
 }
+// --------------
 
-read.on("line", function (line: string) {
-    console.log(trailingZeros(Number(line)));
-});
+const main = async () => {
+    const value = Number(await readConsole());
+    rl.close();
+    console.log(trailingZeros(value));
+};
+
+main();
+
+export default trailingZeros;
