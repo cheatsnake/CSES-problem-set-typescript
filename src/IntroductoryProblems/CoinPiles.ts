@@ -1,4 +1,4 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
 // Solution --------------------------------------------
 function coinPiles(a: number, b: number): "YES" | "NO" {
@@ -6,9 +6,21 @@ function coinPiles(a: number, b: number): "YES" | "NO" {
 }
 // --------------------------------------
 
-read.on("line", function (line: string) {
-    const vals: number[] = line.split(" ").map(Number);
-    console.log(coinPiles(vals[0], vals[1]));
-});
+const main = async () => {
+    const count = Number(await readConsole());
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    lines.forEach((line) => {
+        const values = line.split(" ").map(Number);
+        console.log(coinPiles(values[0], values[1]));
+    });
+};
+
+main();
 
 export default coinPiles;
