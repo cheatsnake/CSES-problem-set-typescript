@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution -------------------------------------
 function missingNumber(nums: number[]): number {
     const arr: number[] = nums.sort((a, b) => a - b);
     let counter: number = arr[0];
@@ -10,8 +11,24 @@ function missingNumber(nums: number[]): number {
     }
     return counter;
 }
+// ----------------
 
-read.on("line", function (line: string) {
-    const vals: number[] = line.split(" ").map(Number);
-    console.log(missingNumber(vals));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const values = lines[1]
+        .split(" ")
+        .slice(0, +lines[0] - 1)
+        .map(Number);
+    console.log(missingNumber(values));
+};
+
+main();
+
+export default missingNumber;
