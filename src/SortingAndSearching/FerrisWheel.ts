@@ -1,16 +1,28 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
-console.log(
-    "The first number is the maximum weight, all next numbers are the weight of each individual child."
-);
-
+// Solution -------------------------------------------------
 function ferrisWheel(max: number, values: number[]): number {
     const sum: number = values.reduce((prev, current) => prev + current);
     return Math.ceil(sum / max);
 }
+// ----------------------------
 
-read.on("line", function (line: string) {
-    const max: number = Number(line.split(" ")[0]);
-    const vals: number[] = line.slice(2).split(" ").map(Number);
-    console.log(ferrisWheel(max, vals));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const n = +lines[0].split(" ")[0];
+    const x = +lines[0].split(" ")[1];
+    const pi = lines[1].split(" ").slice(0, n).map(Number);
+
+    console.log(ferrisWheel(x, pi));
+};
+
+main();
+
+export default ferrisWheel;
