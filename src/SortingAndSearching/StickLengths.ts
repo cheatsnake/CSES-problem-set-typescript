@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution -------------------------------------
 function stickLengths(sticks: number[]): number {
     const average: number =
         sticks.reduce((prev, cur) => prev + cur) / sticks.length;
@@ -18,8 +19,24 @@ function stickLengths(sticks: number[]): number {
         ? totalCounter(Math.ceil)
         : totalCounter(Math.floor);
 }
+// --------------------------------
 
-read.on("line", function (line: string) {
-    const vals: number[] = line.split(" ").map(Number);
-    console.log(stickLengths(vals));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const values = lines[1]
+        .split(" ")
+        .slice(0, +lines[0])
+        .map(Number);
+    console.log(stickLengths(values));
+};
+
+main();
+
+export default stickLengths;
