@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution ----------------------------------------
 function maximunSubarraySum(arr: number[]): number {
     const results: number[] = [];
 
@@ -27,8 +28,24 @@ function maximunSubarraySum(arr: number[]): number {
     }
     return Math.max(...results);
 }
+// ----------------------------
 
-read.on("line", function (line: string) {
-    const vals: number[] = line.split(" ").map(Number);
-    console.log(maximunSubarraySum(vals));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const values = lines[1]
+        .split(" ")
+        .slice(0, +lines[0])
+        .map(Number);
+    console.log(maximunSubarraySum(values));
+};
+
+main();
+
+export default maximunSubarraySum;
