@@ -1,9 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
-console.log(
-    "The first number is the required sum, all subsequent numbers will be included in the array among which the sum will be searched."
-);
-
+// Solution ----------------------------------------------------
 function sumOfTwoValues(sum: number, values: number[]): string {
     const result: number[] = [];
     values.forEach((item, index) => {
@@ -16,9 +13,24 @@ function sumOfTwoValues(sum: number, values: number[]): string {
     });
     return result.length ? result.join(" ") : "IMPOSSIBLE";
 }
+// --------------------------------------------------------
 
-read.on("line", function (line: string) {
-    const sum = Number(line.split(" ")[0]);
-    const vals: number[] = line.slice(2).split(" ").map(Number);
-    console.log(sumOfTwoValues(sum, vals));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const n = +lines[0].split(" ")[0];
+    const x = +lines[0].split(" ")[1];
+    const ai = lines[1].split(" ").slice(0, n).map(Number);
+
+    console.log(sumOfTwoValues(x, ai));
+};
+
+main();
+
+export default sumOfTwoValues;
