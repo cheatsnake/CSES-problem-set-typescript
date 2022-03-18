@@ -1,5 +1,6 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
+// Solution ------------------------------------------
 function collectingNumbers(values: number[]): number {
     let count: number = 0;
     const collection: number[] = [0];
@@ -15,8 +16,24 @@ function collectingNumbers(values: number[]): number {
 
     return count;
 }
+// --------------
 
-read.on("line", function (line: string) {
-    const vals: number[] = line.split(" ").map(Number);
-    console.log(collectingNumbers(vals));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const values = lines[1]
+        .split(" ")
+        .slice(0, +lines[0])
+        .map(Number);
+    console.log(collectingNumbers(values));
+};
+
+main();
+
+export default collectingNumbers;
