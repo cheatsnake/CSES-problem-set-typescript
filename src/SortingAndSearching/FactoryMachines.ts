@@ -1,4 +1,4 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
 // Solution ----------------------------------------------------------
 function factoryMachines(n: number, t: number, ki: number[]): number {
@@ -13,12 +13,24 @@ function factoryMachines(n: number, t: number, ki: number[]): number {
     }
     return time;
 }
-// ------------------------------------
+// -------------
 
-read.on("line", function (line: string) {
-    const vals: number[] = line.split(" ").map(Number);
-    const n = vals[0];
-    const t = vals[1];
-    const ki = vals.slice(2);
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const n = +lines[0].split(" ")[0];
+    const t = +lines[0].split(" ")[1];
+    const ki = lines[1].split(" ").slice(0, n).map(Number);
+
     console.log(factoryMachines(n, t, ki));
-});
+};
+
+main();
+
+export default factoryMachines;
