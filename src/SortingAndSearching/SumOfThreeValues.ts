@@ -1,10 +1,7 @@
-import read from "../index";
+import { rl, readConsole } from "../index";
 
-console.log(
-    "Input: 1st number -> target sum, all next numbers -> array of values"
-);
-
-function sumOfThreeValues(values: number[], sum: number): string {
+// Solution ------------------------------------------------------
+function sumOfThreeValues(sum: number, values: number[]): string {
     const result: number[][] = [];
     const maxIndex: number = values.length - 1;
     const numberOfValues: number = 3;
@@ -43,9 +40,24 @@ function sumOfThreeValues(values: number[], sum: number): string {
 
     return result.length ? `${result[0].join(" ")}` : "IMPOSSIBLE";
 }
+// ----------------------------------------------------------------
 
-read.on("line", function (line: string) {
-    const sum: number = line.split(" ").map(Number)[0];
-    const vals: number[] = line.split(" ").map(Number).slice(1);
-    console.log(sumOfThreeValues(vals, sum));
-});
+const main = async () => {
+    let count = 2;
+    const lines: string[] = [];
+
+    for (let i = 0; i < count; i++) {
+        lines.push(await readConsole());
+    }
+    rl.close();
+
+    const n = +lines[0].split(" ")[0];
+    const x = +lines[0].split(" ")[1];
+    const ai = lines[1].split(" ").slice(0, n).map(Number);
+
+    console.log(sumOfThreeValues(x, ai));
+};
+
+main();
+
+export default sumOfThreeValues;
