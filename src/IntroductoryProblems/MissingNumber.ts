@@ -3,12 +3,13 @@ import { rl, readConsole } from "../index";
 // Solution -------------------------------------
 function missingNumber(nums: number[]): number {
     const arr: number[] = nums.sort((a, b) => a - b);
-    let counter: number = arr[0];
+    let counter = 1;
 
-    for (let num of nums) {
-        if (num !== counter) return counter;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== counter) break;
         counter++;
     }
+
     return counter;
 }
 // ----------------
